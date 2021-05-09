@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
     final diaryCollection = FirebaseFirestore.instance.collection("diaries");
     final diaryStream = diaryCollection.snapshots().map((snapshot) {
       return snapshot.docs
-          .map((doc) => DiaryEntry.fromMap(doc.data()))
+          .map((doc) => DiaryEntry.fromDoc(doc))
           .toList();
     });
     return StreamProvider<List<DiaryEntry>>(

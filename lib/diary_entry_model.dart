@@ -1,14 +1,18 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class DiaryEntry {
   final String emoji;
   final String title;
   final String body;
+  final String id;
 
   DiaryEntry({
     this.emoji,
     this.title,
     this.body,
+    this.id,
   });
 
   DiaryEntry copyWith({
@@ -36,6 +40,15 @@ class DiaryEntry {
       emoji: map['emoji'],
       title: map['title'],
       body: map['body'],
+    );
+  }
+
+  factory DiaryEntry.fromDoc(QueryDocumentSnapshot doc) {
+    return DiaryEntry(
+      emoji: doc['emoji'],
+      title: doc['title'],
+      body: doc['body'],
+      id: doc.id,
     );
   }
 

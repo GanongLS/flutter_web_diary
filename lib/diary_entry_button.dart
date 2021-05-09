@@ -24,13 +24,25 @@ class DiaryEntryButton extends StatelessWidget {
     return FloatingActionButton.extended(
       elevation: 2,
       onPressed: () {
+        debugPrint("Raw Action");
         final diaryEntryMap = DiaryEntry(
           title: titleController.text,
           body: bodyTextController.text,
           emoji: _emoji,
         ).toMap();
-        FirebaseFirestore.instance.collection("diaries").add(diaryEntryMap);
-        // TODO: 4. Create update method to edit diary entry to firestore when DiaryAction.edit with doc id
+
+        if (isAddAction) {
+          debugPrint("Add Action");
+          FirebaseFirestore.instance.collection("diaries").add(diaryEntryMap);
+        } else {
+          final id = widget.diaryEntry.id;
+          debugPrint("Edit Action");
+          FirebaseFirestore.instance
+              .collection("diaries")
+              .doc(id)
+              .update(diaryEntryMap);
+        }
+
         Navigator.of(context).popUntil(ModalRoute.withName('/'));
       },
       label: Text(isAddAction ? 'Submit' : 'Update'),

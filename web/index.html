@@ -27,6 +27,31 @@
 		</script>
 
 		<!-- TODO: 0.1. Add latest firebase and firestore SDKs with your project configuration -->
+
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			var firebaseConfig = {
+				apiKey: 'AIzaSyB0dYYMpeW72nCSy6a6YgCno0IGcL6E7JE',
+				authDomain: 'diary-activities.firebaseapp.com',
+				projectId: 'diary-activities',
+				storageBucket: 'diary-activities.appspot.com',
+				messagingSenderId: '140691221019',
+				appId: '1:140691221019:web:d3189affe1894a29c3e6be',
+				measurementId: 'G-6RJESZR0Q2',
+			}
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig)
+			firebase.analytics()
+		</script>
+
 		<script src="main.dart.js" type="application/javascript"></script>
 	</body>
 </html>

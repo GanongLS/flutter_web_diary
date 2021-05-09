@@ -56,12 +56,14 @@ enum Action { delete, edit, none }
 void _showDeleteDialog(BuildContext context, {Function onDelete}) {
   showDialog(
     context: context,
-    child: AlertDialog(
+    builder: (context) => AlertDialog(
       title: Text('Are you sure you want to delete?'),
       content: Text('Deleted diary entries are permanent and not retrievable.'),
       actions: <Widget>[
-        FlatButton(
-          color: Colors.redAccent,
+        TextButton(
+          style: TextButton.styleFrom(
+            primary: Colors.redAccent,
+          ),
           onPressed: onDelete,
           child: Text('Delete'),
         )
